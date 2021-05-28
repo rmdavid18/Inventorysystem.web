@@ -1,0 +1,50 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@{
+    if (Model.Products != null)
+    {
+        if (Model.Products.Items != null)
+        {
+            if (Model.Products.Items.Count > 0)
+            {
+
+                <div class="row">
+                    <div class="col-12 col-sm-12">
+                        <table class="table table-bordered table-primary table table-responsive ">
+                            <thead>
+                                <tr>
+                                    <th class="text-center col-3">Brand</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Price</th>
+                                    <th class="text-center">Description</th>
+                                    <th class="text-center">Tagline</th>
+                                    <th class="text-center">CategoryId</th>
+                                    <th class="text-center"><a href="#" onclick="newUser()"><i class="fas fa-plus"></i></a></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @{ foreach (var product in Model.Products.Items)
+                                    {
+                                        <tr>
+                                            <td>@product.Brand</td>
+                                            <td>@product.Name</td>
+                                            <td>@product.Price</td>
+                                            <td>@product.Description</td>
+                                            <td>@product.Tagline</td>
+                                            <td>@product.CategoryId</td>
+                                            <td>
+                                                <a href="#"><i class="fas fa-pen-nib"></i></a>
+                                                <a href="#" onclick="confirmDelete('@product.Brand','@product.Name','@product.Tagline')"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+        }
+    }
+}
